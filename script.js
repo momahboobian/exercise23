@@ -1,5 +1,25 @@
 var navbar, shopping, slider;
 
+// Describe this function...
+function displayNavbar() {
+  if(--window.LoopTrap <= 0) throw "Infinite loop.";
+  while (!!navbar.length) {
+    if(--window.LoopTrap <= 0) throw "Infinite loop.";
+    let element_links = document.getElementById('links');
+    let new_li = document.createElement('li');
+    let new_a = document.createElement('a');
+    new_a.innerText = navbar.shift();
+    new_a.setAttribute("href", navbar.shift());
+
+    new_li.appendChild(new_a);
+
+    element_links.appendChild(new_li);
+  }
+  let element_img = document.getElementById('img');
+  slider.push(slider[0]);
+  element_img.setAttribute("src", slider.shift());
+}
+
 function getNumberOrString(value) {
   // Convert a string value to a number if possible
   let number_value = Number(value);
@@ -17,45 +37,24 @@ function displayShopping() {
   element_shaping_basket.innerText = shopping;
 }
 
-// Describe this function...
-function displayNavbar() {
-  if(--window.LoopTrap <= 0) throw "Infinite loop.";
-  while (!!navbar.length) {
-    if(--window.LoopTrap <= 0) throw "Infinite loop.";
-    let element_links = document.getElementById('links');
-    let new_li = document.createElement('li');
-    let new_a = document.createElement('a');
-    new_a.innerText = navbar.shift();
-    new_a.setAttribute("href", navbar.shift());
 
-    new_li.appendChild(new_a);
-
-    element_links.appendChild(new_li);
-  }
-  let element_img3 = document.getElementById('img');
-  slider.push(slider[0]);
-  element_img3.setAttribute("src", slider.shift());
-}
-
-
-navbar = ['CYF Blocks', '#', 'Shop', '#', 'Shopping', '#'];
+navbar = ['CYF Blocks', 'https://tinyurl.com/2c4vs96b', 'Shop', 'https://flower-shop-by-mo.netlify.app/', 'Shopping', '#'];
 slider = ['https://www.burgeon.co.uk/Content/Images/gallery/gallery-corporate.jpg', 'https://www.burgeon.co.uk/Content/Images/gallery/gallery-weddings.jpg', 'https://www.burgeon.co.uk/Content/Images/gallery/gallery-parties.jpg', 'https://www.burgeon.co.uk/Content/Images/gallery/gallery-christmas.jpg'];
-shopping = ['pomegranate', 'https://cdn.appleyardflowers.com/media/catalog/product/cache/5/image/500x/9df78eab33525d08d6e5fb8d27136e95/p/o/pomegranate-rose-_-peony_-mini-moet-_-6-mixed-truffles.jpg', 'Noting', '#', '1', '#'];
 shopping = [];
 displayNavbar();
 
 
 document.getElementById('next').addEventListener('click', (event) => {
-  let element_img = document.getElementById('img');
+  let element_img2 = document.getElementById('img');
   slider.push(slider[0]);
-  element_img.setAttribute("src", slider.shift());
+  element_img2.setAttribute("src", slider.shift());
 
 });
 
 document.getElementById('previous').addEventListener('click', (event) => {
-  let element_img2 = document.getElementById('img');
+  let element_img3 = document.getElementById('img');
   slider.unshift(slider.slice(-1)[0]);
-  element_img2.setAttribute("src", slider.pop());
+  element_img3.setAttribute("src", slider.pop());
 
 });
 
